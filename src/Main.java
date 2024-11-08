@@ -17,7 +17,11 @@ public class Main {
     public static void print_array(int[][] array, int n) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
+                if (pierwsza(array[i][j])) {
+                System.out.print(array[i][j] + "*\t");
+            } else {
                 System.out.print(array[i][j] + "\t");
+            }
             }
             System.out.print("\n");
         }
@@ -30,29 +34,33 @@ public class Main {
         int x = n / 2, y = n / 2;
         array[x][y] = i;
         for (int end = n / 2; end < n; end++) {
-            while (x < end) {
-                x++;
-                i++;
-                array[x][y] = i;
-            }
+            // right
             while (y < end) {
                 y++;
                 i++;
                 array[x][y] = i;
             }
+            // up
             while (x > n-end-1) {
                 x--;
                 i++;
                 array[x][y] = i;
             }
+            // left
             while (y > n-end-1) {
                 y--;
                 i++;
                 array[x][y] = i;
             }
+            // down
+            while (x < end) {
+                x++;
+                i++;
+                array[x][y] = i;
+            }
         }
-        while (x < n-1) {
-            x++;
+        while (y < n-1) {
+            y++;
             i++;
             array[x][y] = i;
         }
@@ -60,6 +68,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        spiralaUlama(6);
+        spiralaUlama(3);
     }
 }
