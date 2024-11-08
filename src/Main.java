@@ -1,3 +1,5 @@
+
+
 public class Main {
     
     public static boolean pierwsza(int n) {
@@ -12,11 +14,52 @@ public class Main {
         return true;
     }
 
-    public static void main(int n) {
-        
+    public static void print_array(int[][] array, int n) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(array[i][j] + "\t");
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public static void spiralaUlama(int n) {
+        int[][] array = new int[n][n];
+        int i = 1;
+        // x, y - coordinates in array, we start from the middle
+        int x = n / 2, y = n / 2;
+        array[x][y] = i;
+        for (int end = n / 2; end < n; end++) {
+            while (x < end) {
+                x++;
+                i++;
+                array[x][y] = i;
+            }
+            while (y < end) {
+                y++;
+                i++;
+                array[x][y] = i;
+            }
+            while (x > n-end-1) {
+                x--;
+                i++;
+                array[x][y] = i;
+            }
+            while (y > n-end-1) {
+                y--;
+                i++;
+                array[x][y] = i;
+            }
+        }
+        while (x < n-1) {
+            x++;
+            i++;
+            array[x][y] = i;
+        }
+        print_array(array, n);
     }
 
     public static void main(String[] args) {
-        for
+        spiralaUlama(6);
     }
 }
